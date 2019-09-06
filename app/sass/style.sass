@@ -1,0 +1,204 @@
+
+/*
+ * Core
+ */
+@import "core/reset"
+@import "core/variables"
+@import "core/templates"
+
+body
+  background: #ddd
+
+
+
+// speed-search
+#speed-search
+  width: 86px
+  height: 45px
+  line-height: 45px
+  position: relative
+  display: flex
+  line-height: 45px
+  @extend %tr-width
+
+  > .placeholder
+    padding:
+      left: 10px
+      right: 10px
+
+    position: absolute
+    background:
+      image: url(../i/search/icon-white.png)
+      position: 10px center
+      repeat: no-repeat
+
+
+    @extend %cursor-p
+    opacity: .7
+    @extend %tr-opacity
+
+
+    &:before
+      font-style: normal
+      content: "Поиск"
+      color: white
+      margin-left: 20px
+    &:hover
+      opacity: 1
+      @extend %tr-opacity
+
+  > .close
+    @extend %display-n
+    position: absolute
+    right: 10px
+    top: 50%
+    margin-top: -9px
+    width: 18px
+    height: 18px
+    background:
+      image: url(../i/search/close-black.png)
+      repeat: no-repeat
+      position: center left
+    @extend %cursor-p
+
+
+  > .search
+    @extend %display-n
+    @extend %width-100
+    height: 45px
+    line-height: 45px
+    @extend %border-n
+    padding-left: 30px
+    padding-right: 35px
+    background:
+      image: url(../i/search/icon-black.png)
+      repeat: no-repeat
+      position: 10px center
+      color: white
+
+    &::-webkit-input-placeholder
+      color: #333
+
+    &::-moz-placeholder
+      color: #333
+
+
+  .result
+    visibility: hidden
+    opacity: 0
+    width: 150px
+    height: 0px
+    background-color: white
+    position: absolute
+    top: 45px
+    //padding-top: 10px
+    //padding-bottom: 10px
+    //right: 0
+    //@extend %box-shadow
+    //transition: opacity .2s, visibility .2s
+    transition: all .2s
+    .error
+      font-size: 14px
+    .items
+      @extend %display-n
+      @extend %fl-l
+      width: inherit
+      max-height: 250px
+      margin: 0
+      overflow-x: hidden /* Hide horizontal scrollbar */
+      overflow-y: auto /* Add vertical scrollbar */
+      .item
+        @extend %width-100
+        height: 80px
+        max-height: 80px
+        overflow: hidden
+        padding-right: 10px
+        padding-left: 10px
+        float: left
+        &:hover
+          background-color: #f2f2f2
+
+        .tab
+          width: 100%
+          padding: 10px 0 10px 0
+          overflow: hidden
+          vertical-align: middle
+          float: left
+          line-height: 20px
+          .poster
+            width: 14.5%
+            margin-right: 8px
+            @extend %fl-l
+            height: 56px
+            background:
+              color: #dddddd
+            i
+              line-height: 56px
+              margin-left: 13px
+            img
+              max-width: none
+              width: 40px
+              height: 56px
+              background:
+                position: center center
+                repeat: no-repeat
+                size: cover
+          .content
+            width: 82%
+            max-width: 82%
+            @extend %fl-l
+            .titles
+
+              margin-top: 10px
+              font-weight: 600
+              width: 100%
+              height: 20px
+              overflow: hidden
+              white-space: nowrap
+              text-overflow: ellipsis
+            .info
+              @extend %fl-l
+              width: 100%
+              height: 20px
+              font-size: 0.875em
+              color: #a6a6a6
+              overflow: hidden
+              white-space: nowrap
+              text-overflow: ellipsis
+    .link-full-search
+      @extend %fl-l
+      @extend %width-100
+      padding:
+        left: 10px
+        right: 10px
+      border-top: 1px solid #e5e5e5
+      text-align: left
+      line-height: 30px
+      display: none
+
+
+
+  &.open
+    width: 250px
+    @extend %cursor-d
+    input.search
+      border-radius: 0
+      @extend %display-b
+    i.close
+      @extend %display-b
+    i.placeholder
+      @extend %display-n
+      &:before
+        content: ""
+    .result
+      width: 300px
+      height: auto
+      max-height: 350px
+      visibility: visible
+      opacity: 1
+      .link-full-search
+        display: block
+
+      @extend %bs-05
+      .items
+        @extend %display-ib
